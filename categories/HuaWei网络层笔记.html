@@ -1,0 +1,1109 @@
+﻿<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/mac.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content=",,,,,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="#  IP地址划分作业题目： ​        192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人 一、解题思路​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的">
+<meta name="keywords" content="网络层笔记">
+<meta property="og:type" content="website">
+<meta property="og:title" content="网络层笔记">
+<meta property="og:url" content="https://linkouyusheng.com/categories/HuaWei网络层笔记.html">
+<meta property="og:site_name" content="林口余生 | 计算机文档">
+<meta property="og:description" content="#  IP地址划分作业题目： ​        192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人 一、解题思路​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://linkouyusheng.com/categories/网络层笔记/tu1.jpg">
+<meta property="og:updated_time" content="2019-05-09T02:48:03.968Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="网络层笔记">
+<meta name="twitter:description" content="#  IP地址划分作业题目： ​        192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人 一、解题思路​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的">
+<meta name="twitter:image" content="https://linkouyusheng.com/categories/网络层笔记/tu1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://linkouyusheng.com/categories/HuaWei网络层笔记.html">
+
+
+
+
+
+  <title>网络层笔记 | 林口余生 | 计算机文档</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?60bef620dc05e2a1c5666455f70f4957";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">林口余生 | 计算机文档</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+	<h2 class="post-title" itemprop="name headline">网络层笔记</h2>
+
+
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <p># </p>
+<h2 id="IP地址划分作业"><a href="#IP地址划分作业" class="headerlink" title="IP地址划分作业"></a>IP地址划分作业</h2><p><strong>题目：</strong></p>
+<p>​        <u>192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人</u></p>
+<h4 id="一、解题思路"><a href="#一、解题思路" class="headerlink" title="一、解题思路"></a>一、解题思路</h4><p>​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的需求，每个需求所需要的地址数量是一样的，那就意味着像有类地址划分的话可能会出现地址危机。</p>
+<h4 id="二、划分步骤"><a href="#二、划分步骤" class="headerlink" title="二、划分步骤"></a>二、划分步骤</h4><p>​        题目要求的特点已经再思路部分说明完毕，接下来我们来谈谈关于这种特殊需求（指划分需求之间的地址书相差不大的情况下）该如何划分地址。那既然四个需求所要求的地址数一样，我们完全可以将网段一分为四，一个子网对应一个需求。对应好后然后再用该子网针对每个需求所要求的划分网段，一分为四后的子网地址数是满足每一个需求最低的可用地址数。</p>
+<ol>
+<li><p>首先将网段 192.168.0.0/18 划分为四个子网提供给每个需求完成划分网络工作，表示四个子网只需要两个二进制位即可，意味着我们将网络位延长两位即可达到需求。</p>
+<p>192.168.0.0/20      ~    192.168.15.255/20            //提供给需求一</p>
+<p>192.168.16.0/20    ~    192.168.31.255/20            //提供给需求二</p>
+<p>192.168.32.0/20    ~    192.168.47.255/20            //提供给需求三</p>
+<p>192.168.48.0/20    ~    192.168.63.255/20            //提供给需求四</p>
+</li>
+</ol>
+<p>   ​        需求一需要五个网段，而我们只能将第一个子网划分为八个网段来满足该需求。（无特殊要求下）掩码表示 8 则需要三个二进制位，所以我们将掩码为20的基础上再延长 3 位，将掩码设位 <strong>23</strong>；需求二需要十个网段，同理十个网段需要四个二进制位来表示，掩码设为 <strong>24</strong>；需求三需要二十个网段，同理五个二进制位，掩码设为 <strong>25</strong>；需求四需要四个网段，同理六个二进制位，掩码设为 <strong>26</strong>。</p>
+<h4 id="三、划分结果的IP地址表"><a href="#三、划分结果的IP地址表" class="headerlink" title="三、划分结果的IP地址表"></a>三、划分结果的IP地址表</h4><p>需求一：</p>
+<p>​        根据划分步骤我们将网段分为 8 个掩码为 23 （后面表示过程中，已经描述网络地址、广播地址，不会再单独写出可用地址范围，排除网络地址、广播地址即可）</p>
+<p>192.168.0.0-1.255/23                可用地址范围：192.168.0.1/23 ~ 192.168.1.254/23</p>
+<p>192.168.2.0-3.255/23                可用地址范围：192.168.2.1/23 ~ 192.168.3.254/23</p>
+<p>192.168.4.0-5.255/23                可用地址范围：192.168.4.1/23 ~ 192.168.5.254/23        </p>
+<p>192.168.6.0-7.255/23                可用地址范围：192.168.6.1/23 ~ 192.168.7.254/23</p>
+<p>192.168.8.0-9.255/23                可用地址范围：192.168.8.1/23 ~ 192.168.9.254/23</p>
+<p>192.168.10.0-11.255/23            可用地址范围：192.168.10.1/23 ~ 192.168.11.254/23</p>
+<p>192.168.12.0-13.255/23            可用地址范围：192.168.12.1/23 ~ 192.168.13.254/23</p>
+<p>192.168.14.0-15.255/23            可用地址范围：192.168.14.1/23 ~ 192.168.15.254/23</p>
+<p>需求二：</p>
+<p>192.168.16.0-16.255/24    192.168.17.0-17.255/24    192.168.18.0-18.255/24    192.168.19.0-19.255/24</p>
+<p>192.168.20.0-20.255/24    192.168.21.0-21.255/24    192.168.22.0-22.255/24    192.168.23.0-23.255/24</p>
+<p>192.168.24.0-24.255/24    192.168.25.0-25.255/24    192.168.26.0-26.255/24    192.168.27.0-27.255/24</p>
+<p>192.168.28.0-28.255/24    192.168.29.0-29.255/24    192.168.30.0-30.255/24    192.168.31.0-31.255/24</p>
+<p>需求三：</p>
+<p>192.168.32.0-127/25    192.168.32.128-255/25    192.168.33.0-127/25    192.168.33.128-255/25</p>
+<p>192.168.34.0-127/25    192.168.34.128-255/25    192.168.35.0-127/25    192.168.35.128-255/25</p>
+<p>192.168.36.0-127/25    192.168.36.128-255/25    192.168.37.0-127/25    192.168.37.128-255/25</p>
+<p>192.168.38.0-127/25    192.168.38.128-255/25    192.168.39.0-127/25    192.168.39.128-255/25</p>
+<p>192.168.40.0-127/25    192.168.40.128-255/25    192.168.41.0-127/25    192.168.41.128-255/25</p>
+<p>192.168.42.0-127/25    192.168.42.128-255/25    192.168.43.0-127/25    192.168.43.128-255/25</p>
+<p>192.168.44.0-127/25    192.168.44.128-255/25    192.168.45.0-127/25    192.168.45.127-255/25</p>
+<p>192.168.46.0-127/25    192.168.46.128-255/25    192.168.47.0-127/25    192.168.47.128-255/25</p>
+<p>需求四：</p>
+<p>192.168.48.0-63/26    192.168.48.64-127/26    192.168.48.128-191/26    192.168.48.192-255/26</p>
+<p>192.168.49.0-63/26    192.168.49.64-127/26    192.168.49.128-191/26    192.168.49.192-255/26</p>
+<p>192.168.50.0-63/26    192.168.50.64-127/26    192.168.50.128-191/26    192.168.40.192-255/26</p>
+<p>192.168.51.0-63/26    192.168.51.64-127/26    192.168.51.128-191/26    192.168.51.192-255/26</p>
+<p>192.168.52.0-63/26    192.168.52.64-127/26    192.168.52.128-191/26    192.168.52.192-255/26</p>
+<p>192.168.53.0-63/26    192.168.53.64-127/26    192.168.53.128-191/26    192.168.53.192-255/26    </p>
+<p>192.168.54.0-63/26    192.168.54.64-127/26    192.168.54.128-191/26    192.168.54.192-255/26</p>
+<p>192.168.55.0-63/26    192.168.55.64-127/26    192.168.55.128-191/26    192.168.55.192-255/26</p>
+<p>192.168.56.0-63/26    192.168.56.64-127/26    192.168.56.128-191/26    192.168.56.192-255/26</p>
+<p>192.168.57.0-63/26    192.168.57.64-127/26    192.168.57.128-191/26    192.168.57.192-255/26</p>
+<p>192.168.58.0-63/26    192.168.58.64-127/26    192.168.58.128-191/26    192.168.58.192-255/26</p>
+<p>192.168.59.0-63/26    192.168.59.64-127/26    192.168.59.128-191/26    192.168.59.192-255/26</p>
+<p>192.168.60.0-63/26    192.168.60.64-127/26    192.168.60.128-191/26    192.168.60.192-255/26</p>
+<p>192.168.61.0-63/26    192.168.61.64-127/26    192.168.61.128-191/26    192.168.61.192-255/26</p>
+<p>192.168.62.0-63/26    192.168.62.64-127/26    192.168.62.128-191/26    192.168.62.192-255/26</p>
+<p>192.168.63.0-63/26    192.168.63.64-127/26    192.168.63.128-191/26    192.168.63.192-255/26</p>
+<h2 id="理论验证作业一"><a href="#理论验证作业一" class="headerlink" title="理论验证作业一"></a>理论验证作业一</h2><h4 id="一、实验猜想"><a href="#一、实验猜想" class="headerlink" title="一、实验猜想"></a>一、实验猜想</h4><p>​        提问：两台主机通过一台路由器互联，当两台主机的MAC地址一致时是否影响网络互通？</p>
+<h4 id="二、理论推理结果"><a href="#二、理论推理结果" class="headerlink" title="二、理论推理结果"></a>二、理论推理结果</h4><p>​        在主机设置路由接口为网关的前提下，我们的注意力放在MAC地址一致的问题。MAC地址一致无疑会影响二层交换层面转发数据，那这会不会同样对路由器生效？（普遍视角是 数据收发的过程都经过了二层）        那么我的看法是，PC1将数据包发出，源IP、源MAC是自己，目的IP是PC2，目的MAC是网关。然后路由器收到这个数据包的同时记录下该数据源地址的IP与MAC地址映射关系，同时发现目的IP不是自己，则根据路由表转发。在查表转发的过程中发现去该IP网段的下一跳时本地直连的网段，于是准备通过该直连接口将数据发出；在发出数据包之前，路由器会更改源目MAC。这是这个问题的核心争议点：我认为，路由器只是通过学习到的MAC、IP映射关系来封装数据包，真正做转发动作的不是交换动作而是路由引擎查表转发的动作。这个动作中，MAC与IP映射关系只起到了一个封装数据包的作用，并不能影响路由器转发平面的决策。</p>
+<h4 id="三、实验环境"><a href="#三、实验环境" class="headerlink" title="三、实验环境"></a>三、实验环境</h4><p>​           <img src="/categories/网络层笔记/tu1.jpg"></p>
+<h4 id="四、实验操作"><a href="#四、实验操作" class="headerlink" title="四、实验操作"></a>四、实验操作</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">[R1]int g0/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line">[R1-GigabitEthernet0/<span class="number">0</span>/<span class="number">0</span>]ip ad <span class="number">192.168</span><span class="number">.1</span><span class="number">.254</span> <span class="number">24</span></span><br><span class="line">[R1-GigabitEthernet0/<span class="number">0</span>/<span class="number">0</span>]int g0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line">[R1-GigabitEthernet0/<span class="number">0</span>/<span class="number">1</span>]ip ad <span class="number">192.168</span><span class="number">.2</span><span class="number">.254</span> <span class="number">24</span></span><br><span class="line"></span><br><span class="line">PC&gt;ping <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span></span><br><span class="line"></span><br><span class="line">Ping <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>: <span class="number">32</span> data bytes, Press Ctrl_C to <span class="keyword">break</span></span><br><span class="line">Request timeout!</span><br><span class="line">From <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>: bytes=<span class="number">32</span> seq=<span class="number">2</span> ttl=<span class="number">127</span> time=<span class="number">15</span> ms</span><br><span class="line">From <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>: bytes=<span class="number">32</span> seq=<span class="number">3</span> ttl=<span class="number">127</span> time&lt;<span class="number">1</span> ms</span><br><span class="line">From <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>: bytes=<span class="number">32</span> seq=<span class="number">4</span> ttl=<span class="number">127</span> time=<span class="number">16</span> ms</span><br><span class="line">From <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>: bytes=<span class="number">32</span> seq=<span class="number">5</span> ttl=<span class="number">127</span> time=<span class="number">16</span> ms</span><br><span class="line"></span><br><span class="line">--- <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span> ping statistics ---</span><br><span class="line">  <span class="number">5</span> packet(s) transmitted</span><br><span class="line">  <span class="number">4</span> packet(s) received</span><br><span class="line">  <span class="number">20.00</span>% packet loss</span><br><span class="line">  round-trip min/avg/max = <span class="number">0</span>/<span class="number">11</span>/<span class="number">16</span> ms</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">[R1]dis arp </span><br><span class="line">IP ADDRESS      MAC ADDRESS     EXPIRE(M) TYPE        INTERFACE   VPN-INSTANCE </span><br><span class="line">                                          VLAN/CEVLAN PVC                      </span><br><span class="line">------------------------------------------------------------------------------</span><br><span class="line"><span class="number">192.168</span><span class="number">.1</span><span class="number">.254</span>   <span class="number">00e0</span>-fc50<span class="number">-6</span>d05            I -         GE0/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line"><span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>     <span class="number">5489</span><span class="number">-9893</span><span class="number">-4885</span>  <span class="number">18</span>        D<span class="number">-0</span>         GE0/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line"><span class="number">192.168</span><span class="number">.2</span><span class="number">.254</span>   <span class="number">00e0</span>-fc50<span class="number">-6</span>d06            I -         GE0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line"><span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>     <span class="number">5489</span><span class="number">-9893</span><span class="number">-4885</span>  <span class="number">18</span>        D<span class="number">-0</span>         GE0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line">------------------------------------------------------------------------------</span><br><span class="line">Total:<span class="number">4</span>         Dynamic:<span class="number">2</span>       Static:<span class="number">0</span>     Interface:<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<h4 id="五、实验验证总结"><a href="#五、实验验证总结" class="headerlink" title="五、实验验证总结"></a>五、实验验证总结</h4><p>​        理论推理结果部分证实了一些，即使不同网段MAC地址映射关系起冲突，路由器转发层面决策并不会受此影响，在发出数据包的时候该表起的作用是将MAC地址填入目的MAC地址。</p>
+<h2 id="理论验证作业二"><a href="#理论验证作业二" class="headerlink" title="理论验证作业二"></a>理论验证作业二</h2><h4 id="一、实验猜想-1"><a href="#一、实验猜想-1" class="headerlink" title="一、实验猜想"></a>一、实验猜想</h4><p>​        通配符掩码在 ACL 中与掩码点分十进制表示方法一样，但是 0 和 1 可以不连续。通过置为 1 的位去匹配IP地址。</p>
+<h4 id="二、理论推理结果-1"><a href="#二、理论推理结果-1" class="headerlink" title="二、理论推理结果"></a>二、理论推理结果</h4><p>​        以前我总觉得反掩码和通配符是一个东西。所以我现在需要通过OSPF中的反掩码和ACL中的反掩码来验证，以及在我看到的资料中显示：反掩码的 1 在每一段 8 位中是必须连续的。</p>
+<h4 id="三、实验环境-1"><a href="#三、实验环境-1" class="headerlink" title="三、实验环境"></a>三、实验环境</h4><p>​        就用上面的图….</p>
+<h4 id="四、实验操作-1"><a href="#四、实验操作-1" class="headerlink" title="四、实验操作"></a>四、实验操作</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">[R1]acl <span class="number">2000</span></span><br><span class="line">[R1-acl-basic<span class="number">-2000</span>]rule <span class="number">10</span> deny source <span class="number">192.168</span><span class="number">.1</span><span class="number">.0</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.5</span> </span><br><span class="line">[R1]int g0/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line">[R1-GigabitEthernet0/<span class="number">0</span>/<span class="number">0</span>]traffic-filter inbound  acl <span class="number">2000</span> </span><br><span class="line"></span><br><span class="line">PC&gt;ping <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span></span><br><span class="line"></span><br><span class="line">Ping <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>: <span class="number">32</span> data bytes, Press Ctrl_C to <span class="keyword">break</span></span><br><span class="line">Request timeout!</span><br><span class="line">Request timeout!</span><br><span class="line">Request timeout!</span><br><span class="line">Request timeout!</span><br><span class="line">Request timeout!</span><br><span class="line"></span><br><span class="line">--- <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span> ping statistics ---</span><br><span class="line">  <span class="number">5</span> packet(s) transmitted</span><br><span class="line">  <span class="number">0</span> packet(s) received</span><br><span class="line">  <span class="number">100.00</span>% packet loss</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line">[R1-ospf<span class="number">-1</span>-area<span class="number">-0.0</span><span class="number">.0</span><span class="number">.0</span>]network <span class="number">192.168</span><span class="number">.1</span><span class="number">.254</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.5</span></span><br><span class="line"><span class="built_in">Error</span>: The network mask is invalid because the network mask must be consecutive.</span><br><span class="line"><span class="comment">//报错消息</span></span><br><span class="line">[R1-ospf<span class="number">-1</span>-area<span class="number">-0.0</span><span class="number">.0</span><span class="number">.0</span>]network <span class="number">192.168</span><span class="number">.1</span><span class="number">.254</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.3</span></span><br><span class="line">[R1-ospf<span class="number">-1</span>-area<span class="number">-0.0</span><span class="number">.0</span><span class="number">.0</span>] <span class="comment">//没有报错</span></span><br></pre></td></tr></table></figure>
+<h4 id="五、实验验证总结-1"><a href="#五、实验验证总结-1" class="headerlink" title="五、实验验证总结"></a>五、实验验证总结</h4><p>​        在ACL中的是通配符掩码（不是真正的通配符），OSPF配置中的是反掩码。反掩码确实不能写不连续的1 。 而通配符掩码则可以</p>
+<h2 id="MAC地址的作用"><a href="#MAC地址的作用" class="headerlink" title="MAC地址的作用"></a>MAC地址的作用</h2><p>（以下是个人对于问题思考的心路历程，欢迎一起讨论）</p>
+<p>​        其实 MAC 地址的作用我们都知道是唯一标识一台设备，通过设备出厂时在对应的网络硬件中烧录固定不重复的 MAC 地址来标识。那么我们可能会说有 IP 地址了，还要MAC地址？我们都知道路由器可以根据IP地址来将数据转发到目的地，但是我们深入考虑一个问题：假如路由器这个出接口所在的网段有很多同网段的设备，那路由器根据转发原理（查路由表，直到查到下一跳是直连路由，然后从这个直连路由的接口出去）将数据从这个接口发出去，但是这个时候路由器要怎么确定我的数据是发给谁呢？假设路由更详细，对每一台同网段的设备都有32位的明细路由，但是出接口就那么一个，路由该怎么保证这个数据是发给谁的呢？也许你会说目的IP地址已经描述清楚了。那在同网段转发中（那么多设备链接的网线也需要有一台设备来连接并且转发），这台设备该怎么将数据包转发到对应的链路呢？如果还是走三层转发那就会回到我们前面的问题。所以 MAC 地址在一定程度解决了这个问题，MAC 地址只需要协助设备完成该网段/LAN 的数据转发，就能在不影响路由器的情况下完成这个任务。</p>
+<p>​        我们再换一种情况，链路采用串行链路。串行链路的特点是线连接的两端不是 A 就是 B ，所以我只要将数据从这个接口发出去，就能确保数据发送后只有对方接收。因此这个时候是不需要 MAC 地址就能确保数据转发在上面遇到的问题。</p>
+<p>​        总结一下，问题就是路由器在同网段的出接口一致，该数据需要有设备来负责在同网段/LAN 中来将数据交给对应的设备。而 MAC 地址恰好就可以在不影响现有条件的情况下解决这个问题。</p>
+<h2 id="每日学习总结"><a href="#每日学习总结" class="headerlink" title="每日学习总结"></a>每日学习总结</h2><p>​        网络层：作用有定义IP 、选路/寻址。接下来我会围绕这两个东西来总结网络层中的IP。</p>
+<p>​        IP地址具有对设备起到定位的作用，是通信双方能够根据这个东西找到对方。而IP地址以点分十进制的形式来表示，本质是由32个二进制位组成。</p>
+<p>​        IP地址最初被分为A、B、C、D、E。IP还有一个重要的东西，那就是子网掩码，用来标识网络位和主机位，网络位可以在路由中帮助数据找到去目的地的路，主机位可以具体指明是哪一台主机。而子网掩码除了根据A、B、C（分别固定为8位、16位、24位），还有两个概念，1.可变长子网掩码 2.CIDR路由汇总。前者可以更细分的划分更小的网段。路由汇总可以让更多的相同前缀路由条目汇合成更少的路由。</p>
+<p>​        IP中还有一些比较重要的东西，反掩码。反掩码可以用来匹配IP地址，反掩码跟子网掩码不仅仅是倒过来的区别，而是可以由不连续的 1 和 0 来匹配对应的多条路由。</p>
+<p>​        IP地址为什么唯一？IP需要在私网和公网中唯一（通信中如果不唯一会造成数据发错对象的问题，私有地址在以后会提，感兴趣的小伙伴可以自行了解。），</p>
+<p>​        寻址–&gt; 路由表RIB –&gt; 直连、非直连，这个过程称之为递归路由，这种操作如果有一定程度了解的人会知道，虽然递归路由在普通情况会导致性能降低，但是如果递归的底层路由是通过动态路由协议冗余备份的话可以起到防止下一跳突然DOWN掉，导致原先发的数据会丢失掉。路由协议分为静态和动态。静态  递归  先判断可达 再看最优 符合就加入路由表 </p>
+
+        
+      </div>
+      
+      
+      
+    </div>
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="林口余生">
+            
+              <p class="site-author-name" itemprop="name">林口余生</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LinKouYuSheng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/linkouyusheng" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#IP地址划分作业"><span class="nav-number">1.</span> <span class="nav-text">IP地址划分作业</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、解题思路"><span class="nav-number">1.0.1.</span> <span class="nav-text">一、解题思路</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、划分步骤"><span class="nav-number">1.0.2.</span> <span class="nav-text">二、划分步骤</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、划分结果的IP地址表"><span class="nav-number">1.0.3.</span> <span class="nav-text">三、划分结果的IP地址表</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#理论验证作业一"><span class="nav-number">2.</span> <span class="nav-text">理论验证作业一</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、实验猜想"><span class="nav-number">2.0.1.</span> <span class="nav-text">一、实验猜想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、理论推理结果"><span class="nav-number">2.0.2.</span> <span class="nav-text">二、理论推理结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、实验环境"><span class="nav-number">2.0.3.</span> <span class="nav-text">三、实验环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、实验操作"><span class="nav-number">2.0.4.</span> <span class="nav-text">四、实验操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、实验验证总结"><span class="nav-number">2.0.5.</span> <span class="nav-text">五、实验验证总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理论验证作业二"><span class="nav-number">3.</span> <span class="nav-text">理论验证作业二</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、实验猜想-1"><span class="nav-number">3.0.1.</span> <span class="nav-text">一、实验猜想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、理论推理结果-1"><span class="nav-number">3.0.2.</span> <span class="nav-text">二、理论推理结果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、实验环境-1"><span class="nav-number">3.0.3.</span> <span class="nav-text">三、实验环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四、实验操作-1"><span class="nav-number">3.0.4.</span> <span class="nav-text">四、实验操作</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五、实验验证总结-1"><span class="nav-number">3.0.5.</span> <span class="nav-text">五、实验验证总结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAC地址的作用"><span class="nav-number">4.</span> <span class="nav-text">MAC地址的作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#每日学习总结"><span class="nav-number">5.</span> <span class="nav-text">每日学习总结</span></a></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林口余生</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">7.3k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+-->
+<!--
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共7.3k字</span>
+</div>
+-->
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'zvfvbljqnX4UfjWBJcTDq17P-gzGzoHsz',
+        appKey: 'qh6avhxD7PMmeadmpCe4vyGj',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+
