@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="网络层笔记,">
+  <meta name="keywords" content="笔记,">
 
 
 
@@ -83,19 +83,19 @@
 
 
 
-<meta name="description" content="#  IP地址划分作业题目： ​        192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人 一、解题思路​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的">
-<meta name="keywords" content="网络层笔记">
+<meta name="description" content="IP地址划分作业题目： ​        192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人 一、解题思路​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的需求，">
+<meta name="keywords" content="笔记">
 <meta property="og:type" content="article">
 <meta property="og:title" content="网络层笔记">
 <meta property="og:url" content="https://linkouyusheng.com/2019/05/09/网络层笔记/index.html">
 <meta property="og:site_name" content="林口余生 | 计算机文档">
-<meta property="og:description" content="#  IP地址划分作业题目： ​        192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人 一、解题思路​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的">
+<meta property="og:description" content="IP地址划分作业题目： ​        192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人 一、解题思路​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的需求，">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://linkouyusheng.com/2019/05/09/网络层笔记/tu1.jpg">
-<meta property="og:updated_time" content="2019-05-09T02:48:03.968Z">
+<meta property="og:updated_time" content="2019-05-09T03:14:05.134Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络层笔记">
-<meta name="twitter:description" content="#  IP地址划分作业题目： ​        192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人 一、解题思路​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的">
+<meta name="twitter:description" content="IP地址划分作业题目： ​        192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人 一、解题思路​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的需求，">
 <meta name="twitter:image" content="https://linkouyusheng.com/2019/05/09/网络层笔记/tu1.jpg">
 
 
@@ -421,8 +421,7 @@
       
 
       
-        <p># </p>
-<h2 id="IP地址划分作业"><a href="#IP地址划分作业" class="headerlink" title="IP地址划分作业"></a>IP地址划分作业</h2><p><strong>题目：</strong></p>
+        <h2 id="IP地址划分作业"><a href="#IP地址划分作业" class="headerlink" title="IP地址划分作业"></a>IP地址划分作业</h2><p><strong>题目：</strong></p>
 <p>​        <u>192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人</u></p>
 <h4 id="一、解题思路"><a href="#一、解题思路" class="headerlink" title="一、解题思路"></a>一、解题思路</h4><p>​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的需求，每个需求所需要的地址数量是一样的，那就意味着像有类地址划分的话可能会出现地址危机。</p>
 <h4 id="二、划分步骤"><a href="#二、划分步骤" class="headerlink" title="二、划分步骤"></a>二、划分步骤</h4><p>​        题目要求的特点已经再思路部分说明完毕，接下来我们来谈谈关于这种特殊需求（指划分需求之间的地址书相差不大的情况下）该如何划分地址。那既然四个需求所要求的地址数一样，我们完全可以将网段一分为四，一个子网对应一个需求。对应好后然后再用该子网针对每个需求所要求的划分网段，一分为四后的子网地址数是满足每一个需求最低的可用地址数。</p>
@@ -530,7 +529,7 @@
   <p><span>本文标题:</span><a href="/2019/05/09/网络层笔记/">网络层笔记</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 林口余生 的个人博客">林口余生</a></p>
   <p><span>发布时间:</span>2019年05月09日 - 08:05</p>
-  <p><span>最后更新:</span>2019年05月09日 - 10:05</p>
+  <p><span>最后更新:</span>2019年05月09日 - 11:05</p>
   <p><span>原始链接:</span><a href="/2019/05/09/网络层笔记/" title="网络层笔记">https://linkouyusheng.com/2019/05/09/网络层笔记/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://linkouyusheng.com/2019/05/09/网络层笔记/" aria-label="复制成功！"></i></span>
   </p>
@@ -557,7 +556,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/网络层笔记/" rel="tag"># 网络层笔记</a>
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
           
         </div>
       
