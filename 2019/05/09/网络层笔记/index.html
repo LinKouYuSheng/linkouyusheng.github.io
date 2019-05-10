@@ -91,12 +91,12 @@
 <meta property="og:site_name" content="林口余生">
 <meta property="og:description" content="IP地址划分作业题目： ​        192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人 一、解题思路​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的需求，">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://www.linkouyusheng.com/2019/05/09/网络层笔记/tu1.jpg">
-<meta property="og:updated_time" content="2019-05-09T03:14:05.134Z">
+<meta property="og:image" content="https://www.linkouyusheng.com/2019/05/09/网络层笔记/img/tu1.jpg">
+<meta property="og:updated_time" content="2019-05-10T14:22:42.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="网络层笔记">
 <meta name="twitter:description" content="IP地址划分作业题目： ​        192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人 一、解题思路​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划分（像有类地址分A、B、C类地址一样）。但是仔细确定需求的时候你也许会发现，一共四个划分网段的需求，">
-<meta name="twitter:image" content="https://www.linkouyusheng.com/2019/05/09/网络层笔记/tu1.jpg">
+<meta name="twitter:image" content="https://www.linkouyusheng.com/2019/05/09/网络层笔记/img/tu1.jpg">
 
 
 
@@ -477,7 +477,7 @@
 <p>192.168.63.0-63/26    192.168.63.64-127/26    192.168.63.128-191/26    192.168.63.192-255/26</p>
 <h2 id="理论验证作业一"><a href="#理论验证作业一" class="headerlink" title="理论验证作业一"></a>理论验证作业一</h2><h4 id="一、实验猜想"><a href="#一、实验猜想" class="headerlink" title="一、实验猜想"></a>一、实验猜想</h4><p>​        提问：两台主机通过一台路由器互联，当两台主机的MAC地址一致时是否影响网络互通？</p>
 <h4 id="二、理论推理结果"><a href="#二、理论推理结果" class="headerlink" title="二、理论推理结果"></a>二、理论推理结果</h4><p>​        在主机设置路由接口为网关的前提下，我们的注意力放在MAC地址一致的问题。MAC地址一致无疑会影响二层交换层面转发数据，那这会不会同样对路由器生效？（普遍视角是 数据收发的过程都经过了二层）        那么我的看法是，PC1将数据包发出，源IP、源MAC是自己，目的IP是PC2，目的MAC是网关。然后路由器收到这个数据包的同时记录下该数据源地址的IP与MAC地址映射关系，同时发现目的IP不是自己，则根据路由表转发。在查表转发的过程中发现去该IP网段的下一跳时本地直连的网段，于是准备通过该直连接口将数据发出；在发出数据包之前，路由器会更改源目MAC。这是这个问题的核心争议点：我认为，路由器只是通过学习到的MAC、IP映射关系来封装数据包，真正做转发动作的不是交换动作而是路由引擎查表转发的动作。这个动作中，MAC与IP映射关系只起到了一个封装数据包的作用，并不能影响路由器转发平面的决策。</p>
-<h4 id="三、实验环境"><a href="#三、实验环境" class="headerlink" title="三、实验环境"></a>三、实验环境</h4><p>​           <img src="/2019/05/09/网络层笔记/tu1.jpg"></p>
+<h4 id="三、实验环境"><a href="#三、实验环境" class="headerlink" title="三、实验环境"></a>三、实验环境</h4><p>​           <img src="/2019/05/09/网络层笔记/img/tu1.jpg"></p>
 <h4 id="四、实验操作"><a href="#四、实验操作" class="headerlink" title="四、实验操作"></a>四、实验操作</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">[R1]int g0/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line">[R1-GigabitEthernet0/<span class="number">0</span>/<span class="number">0</span>]ip ad <span class="number">192.168</span><span class="number">.1</span><span class="number">.254</span> <span class="number">24</span></span><br><span class="line">[R1-GigabitEthernet0/<span class="number">0</span>/<span class="number">0</span>]int g0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line">[R1-GigabitEthernet0/<span class="number">0</span>/<span class="number">1</span>]ip ad <span class="number">192.168</span><span class="number">.2</span><span class="number">.254</span> <span class="number">24</span></span><br><span class="line"></span><br><span class="line">PC&gt;ping <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span></span><br><span class="line"></span><br><span class="line">Ping <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>: <span class="number">32</span> data bytes, Press Ctrl_C to <span class="keyword">break</span></span><br><span class="line">Request timeout!</span><br><span class="line">From <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>: bytes=<span class="number">32</span> seq=<span class="number">2</span> ttl=<span class="number">127</span> time=<span class="number">15</span> ms</span><br><span class="line">From <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>: bytes=<span class="number">32</span> seq=<span class="number">3</span> ttl=<span class="number">127</span> time&lt;<span class="number">1</span> ms</span><br><span class="line">From <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>: bytes=<span class="number">32</span> seq=<span class="number">4</span> ttl=<span class="number">127</span> time=<span class="number">16</span> ms</span><br><span class="line">From <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>: bytes=<span class="number">32</span> seq=<span class="number">5</span> ttl=<span class="number">127</span> time=<span class="number">16</span> ms</span><br><span class="line"></span><br><span class="line">--- <span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span> ping statistics ---</span><br><span class="line">  <span class="number">5</span> packet(s) transmitted</span><br><span class="line">  <span class="number">4</span> packet(s) received</span><br><span class="line">  <span class="number">20.00</span>% packet loss</span><br><span class="line">  round-trip min/avg/max = <span class="number">0</span>/<span class="number">11</span>/<span class="number">16</span> ms</span><br><span class="line">  </span><br><span class="line">  </span><br><span class="line">[R1]dis arp </span><br><span class="line">IP ADDRESS      MAC ADDRESS     EXPIRE(M) TYPE        INTERFACE   VPN-INSTANCE </span><br><span class="line">                                          VLAN/CEVLAN PVC                      </span><br><span class="line">------------------------------------------------------------------------------</span><br><span class="line"><span class="number">192.168</span><span class="number">.1</span><span class="number">.254</span>   <span class="number">00e0</span>-fc50<span class="number">-6</span>d05            I -         GE0/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line"><span class="number">192.168</span><span class="number">.1</span><span class="number">.1</span>     <span class="number">5489</span><span class="number">-9893</span><span class="number">-4885</span>  <span class="number">18</span>        D<span class="number">-0</span>         GE0/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line"><span class="number">192.168</span><span class="number">.2</span><span class="number">.254</span>   <span class="number">00e0</span>-fc50<span class="number">-6</span>d06            I -         GE0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line"><span class="number">192.168</span><span class="number">.2</span><span class="number">.1</span>     <span class="number">5489</span><span class="number">-9893</span><span class="number">-4885</span>  <span class="number">18</span>        D<span class="number">-0</span>         GE0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line">------------------------------------------------------------------------------</span><br><span class="line">Total:<span class="number">4</span>         Dynamic:<span class="number">2</span>       Static:<span class="number">0</span>     Interface:<span class="number">2</span></span><br></pre></td></tr></table></figure>
 <h4 id="五、实验验证总结"><a href="#五、实验验证总结" class="headerlink" title="五、实验验证总结"></a>五、实验验证总结</h4><p>​        理论推理结果部分证实了一些，即使不同网段MAC地址映射关系起冲突，路由器转发层面决策并不会受此影响，在发出数据包的时候该表起的作用是将MAC地址填入目的MAC地址。</p>
 <h2 id="理论验证作业二"><a href="#理论验证作业二" class="headerlink" title="理论验证作业二"></a>理论验证作业二</h2><h4 id="一、实验猜想-1"><a href="#一、实验猜想-1" class="headerlink" title="一、实验猜想"></a>一、实验猜想</h4><p>​        通配符掩码在 ACL 中与掩码点分十进制表示方法一样，但是 0 和 1 可以不连续。通过置为 1 的位去匹配IP地址。</p>
@@ -529,7 +529,7 @@
   <p><span>本文标题:</span><a href="/2019/05/09/网络层笔记/">网络层笔记</a></p>
   <p><span>文章作者:</span><a href="/" title="访问 林口余生 的个人博客">林口余生</a></p>
   <p><span>发布时间:</span>2019年05月09日 - 08:05</p>
-  <p><span>最后更新:</span>2019年05月09日 - 11:05</p>
+  <p><span>最后更新:</span>2019年05月10日 - 22:05</p>
   <p><span>原始链接:</span><a href="/2019/05/09/网络层笔记/" title="网络层笔记">https://www.linkouyusheng.com/2019/05/09/网络层笔记/</a>
     <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.linkouyusheng.com/2019/05/09/网络层笔记/" aria-label="复制成功！"></i></span>
   </p>
@@ -659,7 +659,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -764,7 +764,7 @@
     
       <span class="post-meta-item-text">Site words total count&#58;</span>
     
-    <span title="Site words total count">7.3k</span>
+    <span title="Site words total count">7.2k</span>
   
 </div>
 
@@ -786,7 +786,7 @@
 <!--
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共7.3k字</span>
+  <span class="post-count">博客全站共7.2k字</span>
 </div>
 -->
         
