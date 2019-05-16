@@ -1,0 +1,1407 @@
+﻿<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link href="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+  
+
+<link href="https://cdn.bootcss.com/font-awesome/4.6.2/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/mac.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="实验操作,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="HCIP综合实验文档实验需求 全网依照拓扑图配置vlan和IP地址   总公司： a)  SW3和SW4的互连接口启用eth-trunk，最大带宽为2G b)  SW1、SW2、SW3、和SW4运行MSTP，SW1为VLAN10的Root，SW2为VLAN20的Root c)  PC1-PC4需要提供网关冗余，为了提高安全性，需要做认证，并使用BFD动态检查上行链路状态，实现自动切换    AS1">
+<meta name="keywords" content="实验操作">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HCIP综合实验文档">
+<meta property="og:url" content="https://www.linkouyusheng.com/2019/04/28/HCIP综合实验文档/index.html">
+<meta property="og:site_name" content="林口余生">
+<meta property="og:description" content="HCIP综合实验文档实验需求 全网依照拓扑图配置vlan和IP地址   总公司： a)  SW3和SW4的互连接口启用eth-trunk，最大带宽为2G b)  SW1、SW2、SW3、和SW4运行MSTP，SW1为VLAN10的Root，SW2为VLAN20的Root c)  PC1-PC4需要提供网关冗余，为了提高安全性，需要做认证，并使用BFD动态检查上行链路状态，实现自动切换    AS1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://www.linkouyusheng.com/2019/04/28/HCIP综合实验文档/HCIP.png">
+<meta property="og:updated_time" content="2019-05-10T09:20:01.083Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HCIP综合实验文档">
+<meta name="twitter:description" content="HCIP综合实验文档实验需求 全网依照拓扑图配置vlan和IP地址   总公司： a)  SW3和SW4的互连接口启用eth-trunk，最大带宽为2G b)  SW1、SW2、SW3、和SW4运行MSTP，SW1为VLAN10的Root，SW2为VLAN20的Root c)  PC1-PC4需要提供网关冗余，为了提高安全性，需要做认证，并使用BFD动态检查上行链路状态，实现自动切换    AS1">
+<meta name="twitter:image" content="https://www.linkouyusheng.com/2019/04/28/HCIP综合实验文档/HCIP.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://www.linkouyusheng.com/2019/04/28/HCIP综合实验文档/">
+
+
+
+
+
+  <title>HCIP综合实验文档 | 林口余生</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?60bef620dc05e2a1c5666455f70f4957";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">林口余生</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <h1 class="site-subtitle" itemprop="description"></h1>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://www.linkouyusheng.com/2019/04/28/HCIP综合实验文档/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="林口余生">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="林口余生">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h2 class="post-title" itemprop="name headline">HCIP综合实验文档</h2>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-28T23:06:52+08:00">
+                2019-04-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/HuaWei-Routing-Switch/" itemprop="url" rel="index">
+                    <span itemprop="name">HuaWei Routing & Switch</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/28/HCIP综合实验文档/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/28/HCIP综合实验文档/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">字数统计&#58;</span>
+                
+                <span title="字数统计">
+                  3.5k
+                </span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">
+                  14
+                </span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="HCIP综合实验文档"><a href="#HCIP综合实验文档" class="headerlink" title="HCIP综合实验文档"></a>HCIP综合实验文档</h1><h2 id="实验需求"><a href="#实验需求" class="headerlink" title="实验需求"></a>实验需求</h2><ol>
+<li>全网依照拓扑图配置vlan和IP地址</li>
+</ol>
+<ol start="2">
+<li><p>总公司：</p>
+<p>a)  SW3和SW4的互连接口启用eth-trunk，最大带宽为2G</p>
+<p>b)  SW1、SW2、SW3、和SW4运行MSTP，SW1为VLAN10的Root，SW2为VLAN20的Root</p>
+<p>c)  PC1-PC4需要提供网关冗余，为了提高安全性，需要做认证，并使用BFD动态检查上行链路状态，实现自动切换</p>
+</li>
+</ol>
+<ol start="3">
+<li><p>AS100需求：</p>
+<p>a)  每台设备都需要配置Loopback接口，地址为X.X.X.X（X为设备编号）</p>
+<p>b)  AS100底层IGP协议为IS-IS，区域为level-2，确保各路由器的loopback接口互通</p>
+<p>c)  R1与R4建立IBGP邻居（使用loopback接口）</p>
+<p>d)  MPLS-VPN需求：</p>
+<ol>
+<li><p>总公司的PC能访问分公司1/2的PC，分公司之间不能互访</p>
+</li>
+<li><p>R1和SW3、SW4之间运行OSPF协议</p>
+</li>
+<li><p>R4和R5之间运行BGP协议</p>
+</li>
+<li><p>R4和R6之间运行OSPF协议</p>
+</li>
+<li><p>R1和R4建立MP-BGP邻居</p>
+</li>
+</ol>
+</li>
+</ol>
+<ol start="4">
+<li><p>分公司1需求：</p>
+<p>a)  SW5为二层交换机，PC5与PC6配置不同VLAN（属于不同网段），确保两台PC能互访</p>
+</li>
+<li><p>分公司2需求：</p>
+<p>a)  PC8与PC7属于不同VLAN（相同网段），通过VLANIF技术让两台PC正常访问总公司，但是不能互访</p>
+<p>b)  内部IGP运行OSPF协议，为了加快收敛速度，每网段不允许存在DR</p>
+</li>
+</ol>
+<h2 id="实验环境"><a href="#实验环境" class="headerlink" title="实验环境"></a>实验环境</h2><p><img src="/2019/04/28/HCIP综合实验文档/HCIP.png" alt></p>
+<h2 id="实验思路分析"><a href="#实验思路分析" class="headerlink" title="实验思路分析"></a>实验思路分析</h2><p>​        该实验拓扑结合需求来看，分为三个内网，要通过MPLS VPN 来实现互访的需求，也就是说 我们需要先解决三个内网的访问需求再来 AS 100 上做路由 MPLS 、BGP等配置。所以我将实验拆分为三个内网的配置部分，内网接入公网部分、公网部分一共五个部分来做。</p>
+<h2 id="业务网段规划"><a href="#业务网段规划" class="headerlink" title="业务网段规划"></a>业务网段规划</h2><table>
+<thead>
+<tr>
+<th>业务网段主机</th>
+<th>所属 VLAN</th>
+<th>IP地址</th>
+<th>网关</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>总公司 PC1</td>
+<td>VLAN 100</td>
+<td>192.168.10.1/24</td>
+<td>192.168.10.254</td>
+</tr>
+<tr>
+<td>总公司 PC2</td>
+<td>VLAN 200</td>
+<td>192.168.20.1/24</td>
+<td>192.168.20.254</td>
+</tr>
+<tr>
+<td>总公司 PC3</td>
+<td>VLAN 100</td>
+<td>192.168.10.2/24</td>
+<td>192.168.10.254</td>
+</tr>
+<tr>
+<td>总公司 PC4</td>
+<td>VLAN 200</td>
+<td>192.168.20.2/24</td>
+<td>192.168.20.254</td>
+</tr>
+<tr>
+<td>分公司-1 PC5</td>
+<td>VLAN 10</td>
+<td>192.168.110.1/24</td>
+<td>192.168.110.254</td>
+</tr>
+<tr>
+<td>分公司-1 PC6</td>
+<td>VLAN 20</td>
+<td>192.168.120.1/24</td>
+<td>192.168.120.254</td>
+</tr>
+<tr>
+<td>分公司-2 PC7</td>
+<td>VLAN 10</td>
+<td>192.168.200.1/24</td>
+<td>192.168.200.254</td>
+</tr>
+<tr>
+<td>分公司-3 PC8</td>
+<td>VLAN 20</td>
+<td>192.168.200.2/24</td>
+<td>192.168.200.254</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="实验过程"><a href="#实验过程" class="headerlink" title="实验过程"></a>实验过程</h2><h3 id="1、配置总公司部分"><a href="#1、配置总公司部分" class="headerlink" title="1、配置总公司部分"></a>1、配置总公司部分</h3><h4 id="VLAN-部分"><a href="#VLAN-部分" class="headerlink" title="VLAN 部分"></a>VLAN 部分</h4><p>​        <strong>SW1</strong> 和 <strong>SW2</strong> 的配置很简单 ：在用户接入接口配置对应的 Access 类型 VLAN。SW1 和 SW2连接主机的接口为 Access，连接三层交换机的接口配置为 Trunk 类型 并允许所有 VLAN 通过。下图SW1的配置文件作为参考 （所有交换机都先要创建好VLAN 再进行配置，以此实验为例，先在四台交换机上创建好VLAN 100、200 再开始其他配置，不要出现交换机上创建的VLAN 不一致的情况，要向配置路由器一样先去创建好VLAN）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">interface Ethernet0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line"> port link-type trunk</span><br><span class="line"> port trunk allow-pass vlan <span class="number">2</span> to <span class="number">4094</span></span><br><span class="line">#</span><br><span class="line">interface Ethernet0/<span class="number">0</span>/<span class="number">2</span></span><br><span class="line"> port link-type trunk</span><br><span class="line"> port trunk allow-pass vlan <span class="number">2</span> to <span class="number">4094</span></span><br><span class="line">#</span><br><span class="line">interface Ethernet0/<span class="number">0</span>/<span class="number">3</span></span><br><span class="line"> port link-type access</span><br><span class="line"> port <span class="keyword">default</span> vlan <span class="number">100</span></span><br><span class="line">#</span><br><span class="line">interface Ethernet0/<span class="number">0</span>/<span class="number">4</span></span><br><span class="line"> port link-type access</span><br><span class="line"> port <span class="keyword">default</span> vlan <span class="number">200</span></span><br></pre></td></tr></table></figure>
+<p>​        <strong>SW3、SW4</strong> 上只需对连接到 二层交换机 的接口配置为  Trunk 类型并且允许所有VLAN 通过即可，以SW3配置文件为例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">interface GigabitEthernet0/<span class="number">0</span>/<span class="number">2</span></span><br><span class="line"> port link-type trunk</span><br><span class="line"> port trunk allow-pass vlan <span class="number">2</span> to <span class="number">4094</span></span><br><span class="line">#</span><br><span class="line">interface GigabitEthernet0/<span class="number">0</span>/<span class="number">3</span></span><br><span class="line"> port link-type trunk</span><br><span class="line"> port trunk allow-pass vlan <span class="number">2</span> to <span class="number">4094</span></span><br></pre></td></tr></table></figure>
+<p>VLAN 部分配置即结束</p>
+<h4 id="配置生成树部分"><a href="#配置生成树部分" class="headerlink" title="配置生成树部分"></a>配置生成树部分</h4><p>​        四台交换机都必须参与到生成树的计算机中来，需求是多实例生成树，所以我们要配置MSTP。多实例生成树也要向VLAN一样，首先要确定参与生成树计算的交换机 实例与VLAN 的绑定配置一致。一致之后再来自主选择根桥，以SW3的配置文件为例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">stp region-configuration                    <span class="comment">//进入生成树的配置，默认就是MSTP</span></span><br><span class="line"> region-name chenliang                      <span class="comment">//配置MSTP的域名，可不配，配就要都同步</span></span><br><span class="line"> instance <span class="number">1</span> vlan <span class="number">100</span>                        <span class="comment">//实例 1 与 VLAN 100 绑定，针对VLAN100单独计算</span></span><br><span class="line"> instance <span class="number">2</span> vlan <span class="number">200</span>                        </span><br><span class="line"> active region-configuration                <span class="comment">//提交配置生效</span></span><br><span class="line"></span><br><span class="line">stp instance <span class="number">1</span> root primary                 <span class="comment">//设置该交换机成为实例 1 的根桥</span></span><br><span class="line">stp instance <span class="number">2</span> root secondary               <span class="comment">//设置该交换机成为实例 2 的备份根桥</span></span><br></pre></td></tr></table></figure>
+<h4 id="配置链路聚合部分"><a href="#配置链路聚合部分" class="headerlink" title="配置链路聚合部分"></a>配置链路聚合部分</h4><p>​        链路聚合创建聚合接口，然后将物理接口加入这个聚合组即可，最后通过一条命令来限制链路聚合的上限带宽为2G，以SW3的配置为例，SW4照常。（SW3是G口，一个接口的速率为1G，所以我们设置阈值为2）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">interface Eth-Trunk0                                <span class="comment">//创建聚合组接口</span></span><br><span class="line"> port link-type trunk</span><br><span class="line"> port trunk allow-pass vlan <span class="number">2</span> to <span class="number">4094</span></span><br><span class="line"> max bandwidth-affected-linknumber <span class="number">2</span>                <span class="comment">//限制带宽的链路Up 上限阈值</span></span><br><span class="line"></span><br><span class="line">interface GigabitEthernet0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line"> eth-trunk <span class="number">0</span>                                        <span class="comment">//加入聚合组接口</span></span><br><span class="line">#</span><br><span class="line">interface GigabitEthernet0/<span class="number">0</span>/<span class="number">4</span></span><br><span class="line"> eth-trunk <span class="number">0</span></span><br><span class="line">#</span><br><span class="line">interface GigabitEthernet0/<span class="number">0</span>/<span class="number">5</span></span><br><span class="line"> eth-trunk <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h4 id="VRRP与BFD联动配置部分"><a href="#VRRP与BFD联动配置部分" class="headerlink" title="VRRP与BFD联动配置部分"></a>VRRP与BFD联动配置部分</h4><p>​        VRRP用来解决需求中的网关冗余，BFD实现链路检测，与VRRP搭配使用可实现快速的故障网络切换</p>
+<p>​        我们先配置BFD部分，以SW3做一个对连接R1链路的BFD配置文件为例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//R3的配置文件部分（先要执行BFD来全局使能，peer-ip是对端IP 接口是本端接口）</span></span><br><span class="line">bfd <span class="number">13</span> bind peer-ip <span class="number">192.168</span><span class="number">.13</span><span class="number">.1</span> interface Vlanif1 source-ip <span class="number">192.168</span><span class="number">.13</span><span class="number">.3</span></span><br><span class="line"> discriminator local <span class="number">13</span>                   <span class="comment">//本地标识符</span></span><br><span class="line"> discriminator remote <span class="number">131</span>                 <span class="comment">//对端标识符</span></span><br><span class="line"> commit                                   <span class="comment">//提交配置</span></span><br><span class="line"> </span><br><span class="line"> <span class="comment">//R1的配置文件部分</span></span><br><span class="line"> bfd <span class="number">14</span> bind peer-ip <span class="number">192.168</span><span class="number">.14</span><span class="number">.4</span> vpn-instance <span class="number">2</span> interface GigabitEthernet0/<span class="number">0</span>/<span class="number">1</span> s</span><br><span class="line">ource-ip <span class="number">192.168</span><span class="number">.14</span><span class="number">.1</span></span><br><span class="line"> discriminator local <span class="number">1</span></span><br><span class="line"> discriminator remote <span class="number">14</span></span><br><span class="line"> commit</span><br></pre></td></tr></table></figure>
+<p>​        然后配置VRRP 部分，配置后，让VRRP 与BFD 进行一个联动，通过BFD检测链路信息的反馈来实现VRRP 网关故障的快速切换，SW3要实现VLAN 100的网关为主，VLAN 200的网关为备份。以SW3的配置文件为例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">interface Vlanif100</span><br><span class="line"> ip address <span class="number">192.168</span><span class="number">.10</span><span class="number">.252</span> <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line"> vrrp vrid <span class="number">1</span> virtual-ip <span class="number">192.168</span><span class="number">.10</span><span class="number">.254</span>              <span class="comment">//创建一个虚拟网关路由器，IP为 10.254</span></span><br><span class="line"> vrrp vrid <span class="number">1</span> priority <span class="number">240</span>                           <span class="comment">//设置本地在虚拟网关路由器 1 上的优先级</span></span><br><span class="line"> vrrp vrid <span class="number">1</span> track bfd-session <span class="number">13</span> reduced <span class="number">200</span>       <span class="comment">//追踪BFD检测的结果，故障则优先级减少200</span></span><br><span class="line"> vrrp vrid <span class="number">1</span> authentication-mode simple <span class="number">123456</span>      <span class="comment">//配置认证，密码为123456</span></span><br><span class="line">#</span><br><span class="line">interface Vlanif200</span><br><span class="line"> ip address <span class="number">192.168</span><span class="number">.20</span><span class="number">.252</span> <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line"> vrrp vrid <span class="number">2</span> virtual-ip <span class="number">192.168</span><span class="number">.20</span><span class="number">.254</span></span><br></pre></td></tr></table></figure>
+<p>总公司内网配置完成。</p>
+<h3 id="2、配置分公司-1-部分"><a href="#2、配置分公司-1-部分" class="headerlink" title="2、配置分公司-1 部分"></a>2、配置分公司-1 部分</h3><h4 id="VLAN部分"><a href="#VLAN部分" class="headerlink" title="VLAN部分"></a>VLAN部分</h4><p>​        SW5部分配置比较简单，创建VLAN 10 和 20 ，然后上行链路配置为 Trunk 类型允许所有VLAN 通过即可，SW5的配置文件内容如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">interface Ethernet0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line"> port link-type trunk</span><br><span class="line"> port trunk allow-pass vlan <span class="number">2</span> to <span class="number">4094</span></span><br><span class="line"></span><br><span class="line">interface Ethernet0/<span class="number">0</span>/<span class="number">2</span></span><br><span class="line"> port link-type access</span><br><span class="line"> port <span class="keyword">default</span> vlan <span class="number">10</span></span><br><span class="line"> </span><br><span class="line">interface Ethernet0/<span class="number">0</span>/<span class="number">3</span></span><br><span class="line"> port link-type access</span><br><span class="line"> port <span class="keyword">default</span> vlan <span class="number">20</span></span><br></pre></td></tr></table></figure>
+<h4 id="单臂路由部分"><a href="#单臂路由部分" class="headerlink" title="单臂路由部分"></a>单臂路由部分</h4><p>​        这部分的操作不会太多，不同VLAN不同网段的互访可以使用单臂路由来解决。仅仅是创建子接口，然后子接口使其能够处理802.1q的帧。然后开启子接口下的ARP广播功能，R5的配置文件如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">interface GigabitEthernet0/<span class="number">0</span>/<span class="number">1.10</span>                   <span class="comment">//直接进入接口即可创建子接口</span></span><br><span class="line"> dot1q termination vid <span class="number">10</span>                           <span class="comment">//能够处理VLAN 10 的 802.1q的帧</span></span><br><span class="line"> ip address <span class="number">192.168</span><span class="number">.110</span><span class="number">.254</span> <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span> </span><br><span class="line"> arp broadcast enable                               <span class="comment">//ARP广播开启</span></span><br><span class="line">#</span><br><span class="line">interface GigabitEthernet0/<span class="number">0</span>/<span class="number">1.20</span></span><br><span class="line"> dot1q termination vid <span class="number">20</span></span><br><span class="line"> ip address <span class="number">192.168</span><span class="number">.120</span><span class="number">.254</span> <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span> </span><br><span class="line"> arp broadcast enable</span><br></pre></td></tr></table></figure>
+<p>分公司-2部分结束</p>
+<h3 id="3、配置分公司-2-部分"><a href="#3、配置分公司-2-部分" class="headerlink" title="3、配置分公司-2 部分"></a>3、配置分公司-2 部分</h3><h4 id="VLAN配置部分"><a href="#VLAN配置部分" class="headerlink" title="VLAN配置部分"></a>VLAN配置部分</h4><p>​        SW7 创建VLAN10、20、30，然后将连接的PC机划分至对应的VLAN。既然同网段不同VLAN的网络要访问外网就需要共一个网关，那我们就可以用聚合VLAN来解决这个问题。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">interface Vlanif30</span><br><span class="line"> ip address <span class="number">192.168</span><span class="number">.200</span><span class="number">.254</span> <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line">#</span><br><span class="line">interface GigabitEthernet0/<span class="number">0</span>/<span class="number">2</span></span><br><span class="line"> port link-type access</span><br><span class="line"> port <span class="keyword">default</span> vlan <span class="number">20</span></span><br><span class="line">#</span><br><span class="line">interface GigabitEthernet0/<span class="number">0</span>/<span class="number">3</span></span><br><span class="line"> port link-type access</span><br><span class="line"> port <span class="keyword">default</span> vlan <span class="number">10</span></span><br><span class="line"></span><br><span class="line">vlan <span class="number">30</span></span><br><span class="line"> aggregate-vlan                       <span class="comment">//设置该VLAN为聚合VLAN</span></span><br><span class="line"> access-vlan <span class="number">10</span> <span class="number">20</span>                    <span class="comment">//将子VLAN 10 和 20 划分到 VLAN30中</span></span><br></pre></td></tr></table></figure>
+<h4 id="IGP配置部分"><a href="#IGP配置部分" class="headerlink" title="IGP配置部分"></a>IGP配置部分</h4><p>​        简单的配置OSPF不是问题，问题是在不改动拓扑的情况下来实现OSPF中不选DR，不存在的DR的情况只可能是链路是P2P类型，这件事情只需要一条命令即可解决。以SW7配置文件部分为例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">ospf <span class="number">200</span> router-id <span class="number">7.7</span><span class="number">.7</span><span class="number">.7</span></span><br><span class="line"> area <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">  network <span class="number">192.168</span><span class="number">.200</span><span class="number">.254</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">  network <span class="number">192.168</span><span class="number">.67</span><span class="number">.7</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line"></span><br><span class="line">interface Vlanif1</span><br><span class="line"> ip address <span class="number">192.168</span><span class="number">.67</span><span class="number">.7</span> <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span></span><br><span class="line"> ospf network-type p2p                               <span class="comment">//设置该接口在OSPF中为P2P类型</span></span><br></pre></td></tr></table></figure>
+<p>分公司-2部分结束</p>
+<h3 id="4、配置-VPN-实例部分"><a href="#4、配置-VPN-实例部分" class="headerlink" title="4、配置  VPN 实例部分"></a>4、配置  VPN 实例部分</h3><h4 id="VPN-实例配置部分"><a href="#VPN-实例配置部分" class="headerlink" title="VPN 实例配置部分"></a>VPN 实例配置部分</h4><p>​        创建多个VPN 实例，并基于 VPN 实例来配置路由部分， 为后面配置MPLS VPN 、 MP-BGP做准备</p>
+<p>​        以R1为例子，我们创建一个VPN instance 1 与 SW3 连接的接口绑定，实例2 与 SW4连接的接口绑定，关于RD RT的分配， 总公司的RD 为 100：1和200：1 ，总公司路由出去的时候RT为1000：1，分公司的RD 分别为110：1、120：1。 分公司路由出去的时候RT分别为1100：1、1200：1。</p>
+<p>（之所以前面将总公司的路由用两个不同的RD来区分路由就是为了将双出口的路由区分开，否则当VRRP震荡，R4上关于总公司的两条BGP路由会被当成一条路由撤销，当RD区分成两条不同的路由后，VRRP的震荡不会导致路由直接丢失）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//R1的配置</span></span><br><span class="line">ip vpn-instance <span class="number">1</span>                                     <span class="comment">//该实例绑定到G0/0/0接口</span></span><br><span class="line"> ipv4-family</span><br><span class="line">  route-distinguisher <span class="number">100</span>:<span class="number">1</span>                           <span class="comment">//设置RD，作用是区分路由</span></span><br><span class="line">  vpn-target <span class="number">1000</span>:<span class="number">1</span> <span class="keyword">export</span>-extcommunity               <span class="comment">//路由出去的时候RT值</span></span><br><span class="line">  vpn-target <span class="number">1100</span>:<span class="number">1</span> <span class="number">1200</span>:<span class="number">1</span> <span class="keyword">import</span>-extcommunity        <span class="comment">//允许的RT值路由才会加入VRF</span></span><br><span class="line">#</span><br><span class="line">ip vpn-instance <span class="number">2</span>                                     <span class="comment">//该实例绑定到G0/0/1接口</span></span><br><span class="line"> ipv4-family</span><br><span class="line">  route-distinguisher <span class="number">200</span>:<span class="number">1</span></span><br><span class="line">  vpn-target <span class="number">1000</span>:<span class="number">1</span> <span class="keyword">export</span>-extcommunity</span><br><span class="line">  vpn-target <span class="number">1100</span>:<span class="number">1</span> <span class="number">1200</span>:<span class="number">1</span> <span class="keyword">import</span>-extcommunity</span><br><span class="line">  </span><br><span class="line"><span class="comment">//R4的配置</span></span><br><span class="line">ip vpn-instance <span class="number">1</span>                                     <span class="comment">//该实例绑定到G0/0/2接口</span></span><br><span class="line"> ipv4-family</span><br><span class="line">  route-distinguisher <span class="number">110</span>:<span class="number">1</span></span><br><span class="line">  vpn-target <span class="number">1100</span>:<span class="number">1</span> <span class="keyword">export</span>-extcommunity</span><br><span class="line">  vpn-target <span class="number">1000</span>:<span class="number">1</span> <span class="keyword">import</span>-extcommunity</span><br><span class="line">#</span><br><span class="line">ip vpn-instance <span class="number">2</span>                                     <span class="comment">//该实例绑定到G4/0/0接口</span></span><br><span class="line"> ipv4-family</span><br><span class="line">  route-distinguisher <span class="number">120</span>:<span class="number">1</span></span><br><span class="line">  vpn-target <span class="number">1200</span>:<span class="number">1</span> <span class="keyword">export</span>-extcommunity</span><br><span class="line">  vpn-target <span class="number">1000</span>:<span class="number">1</span> <span class="keyword">import</span>-extcommunity</span><br></pre></td></tr></table></figure>
+<h4 id="总公司接入公网部分"><a href="#总公司接入公网部分" class="headerlink" title="总公司接入公网部分"></a>总公司接入公网部分</h4><p>​        跟平时一样采用OSPF完成IGP互联，不同点是R1运行的OSPF是基于VPN实例。总公司接入公网的方式采用双接口接入。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//SW3上的配置</span></span><br><span class="line">ospf <span class="number">100</span> router-id <span class="number">192.168</span><span class="number">.13</span><span class="number">.3</span></span><br><span class="line"> area <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">  network <span class="number">192.168</span><span class="number">.13</span><span class="number">.3</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">  network <span class="number">192.168</span><span class="number">.10</span><span class="number">.252</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">  network <span class="number">192.168</span><span class="number">.20</span><span class="number">.252</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">#</span><br><span class="line"><span class="comment">//SW4上的配置</span></span><br><span class="line">ospf <span class="number">200</span> router-id <span class="number">192.168</span><span class="number">.14</span><span class="number">.4</span></span><br><span class="line"> area <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">  network <span class="number">192.168</span><span class="number">.14</span><span class="number">.4</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">  network <span class="number">192.168</span><span class="number">.10</span><span class="number">.253</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br><span class="line">  network <span class="number">192.168</span><span class="number">.20</span><span class="number">.253</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+<h4 id="分公司2接入部分"><a href="#分公司2接入部分" class="headerlink" title="分公司2接入部分"></a>分公司2接入部分</h4><p>​        R4与R6基于VPN实例建立OSPF邻居没什么，如果要网段中不允许存在DR，我们就需要修改OSPF的默认链路类型为P2P。（OSPF网络中的每个接口都要配置链路类型，这样的话不用修改链路），下图为R6</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">interface GigabitEthernet0/<span class="number">0</span>/<span class="number">0</span></span><br><span class="line"> ip address <span class="number">10.1</span><span class="number">.46</span><span class="number">.6</span> <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span> </span><br><span class="line"> ospf network-type p2p                         <span class="comment">//手动修改链路类型为P2P</span></span><br><span class="line">#</span><br><span class="line">interface GigabitEthernet0/<span class="number">0</span>/<span class="number">1</span></span><br><span class="line"> ip address <span class="number">192.168</span><span class="number">.67</span><span class="number">.6</span> <span class="number">255.255</span><span class="number">.255</span><span class="number">.0</span> </span><br><span class="line"> ospf network-type p2p</span><br><span class="line"></span><br><span class="line">ospf <span class="number">200</span> router-id <span class="number">6.6</span><span class="number">.6</span><span class="number">.6</span> </span><br><span class="line"> area <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span> </span><br><span class="line">  network <span class="number">10.1</span><span class="number">.46</span><span class="number">.6</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span> </span><br><span class="line">  network <span class="number">192.168</span><span class="number">.67</span><span class="number">.6</span> <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span></span><br></pre></td></tr></table></figure>
+<h3 id="5、配置-AS-100-部分"><a href="#5、配置-AS-100-部分" class="headerlink" title="5、配置 AS 100 部分"></a>5、配置 AS 100 部分</h3><h4 id="R1-R4配置部分"><a href="#R1-R4配置部分" class="headerlink" title="R1-R4配置部分"></a>R1-R4配置部分</h4><p>​        IGP、MPLS、BGP部分暂时略过，IGP采用IS-IS建立 level-2 的邻居 。MPLS采用 LDP 动态标签分发。重点要说一下 BGP 的配置部分，R1 与 R4建立一个IBGP邻居即可（用环回口建立邻居）。不同点在与 R1 与R4还要建立MP-BGP的邻居来传递VPN实例的路由（R4与 R5的EBGP建立在下一部分说），下面是以R1的配置文件为例子</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//R1</span></span><br><span class="line">bgp <span class="number">100</span></span><br><span class="line"> peer <span class="number">4.4</span><span class="number">.4</span><span class="number">.4</span> <span class="keyword">as</span>-number <span class="number">100</span> </span><br><span class="line"> peer <span class="number">4.4</span><span class="number">.4</span><span class="number">.4</span> connect-interface LoopBack0                 <span class="comment">//环回口建立邻居</span></span><br><span class="line"> #</span><br><span class="line"> ipv4-family unicast</span><br><span class="line">  undo synchronization</span><br><span class="line">  peer <span class="number">4.4</span><span class="number">.4</span><span class="number">.4</span> enable</span><br><span class="line"> # </span><br><span class="line"> ipv4-family vpnv4</span><br><span class="line">  policy vpn-target</span><br><span class="line">  peer <span class="number">4.4</span><span class="number">.4</span><span class="number">.4</span> enable                                      <span class="comment">//使能对端邻居基于VPN实例传递路由</span></span><br><span class="line"> #</span><br><span class="line"> ipv4-family vpn-instance <span class="number">1</span> </span><br><span class="line">  <span class="keyword">import</span>-route ospf <span class="number">100</span>                                    <span class="comment">//引入总公司的OSPF路由</span></span><br><span class="line"> #</span><br><span class="line"> ipv4-family vpn-instance <span class="number">2</span> </span><br><span class="line">  <span class="keyword">import</span>-route ospf <span class="number">200</span></span><br><span class="line">#</span><br></pre></td></tr></table></figure>
+<h4 id="分公司-2接入部分"><a href="#分公司-2接入部分" class="headerlink" title="分公司-2接入部分"></a>分公司-2接入部分</h4><p>​        重点在于基于VPN实例的EBGP的建立方式跟普通EBGP不太一样，变化主要在R4身上。R4配置如下：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ipv4-family vpn-instance <span class="number">1</span>                    <span class="comment">//在BGP视图下进入VPN实例1来配置EBGP邻居</span></span><br><span class="line"> <span class="keyword">as</span>-number <span class="number">1000</span>                               <span class="comment">//一般这种基于VPN实例的EBGP都要重新分配私网AS号</span></span><br><span class="line"> peer <span class="number">10.1</span><span class="number">.45</span><span class="number">.5</span> <span class="keyword">as</span>-number <span class="number">200</span>                 <span class="comment">//指定邻居</span></span><br></pre></td></tr></table></figure>
+<p>​        （需要注意的是，R5指定EBGP邻居的时候要AS号码应该为你给R4在实例BGP下重新分配的AS号码）</p>
+<h2 id="实验总结"><a href="#实验总结" class="headerlink" title="实验总结"></a>实验总结</h2><p>​        1、从私网开始配置，私网配置结束再开始配置公网，不管是私网还是公网，从底层开始配置，比如私网部分就是从二层开始配置，二层配置完毕开始配置三层路由协议等等配置，这样一旦网络不通，我们就可以首要排除底层没有问题。否则再配置过程中会出现大量时间用来排错的现象。</p>
+<p>​        2、在该实验中会出现一些从未接触的需求，但是不要着急配，不熟悉的需求一般跟网络互通没有多大关系，所以可以跳过这个需求，把其他网络互通的要求做完了再来针对性的做一些特殊配置，例如本实验中的BFD联动、VRRP认证、不允许存在DR等等，这些要求是不影响配置网络互通的，所以可以留到最后再做。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <div>
+  
+    ﻿
+<div style="text-align:center;color: #ccc;font-size:14px;">
+------ 本文结束 ------</div>
+
+  
+</div>
+
+<div>
+      
+        ﻿
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/04/28/HCIP综合实验文档/">HCIP综合实验文档</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 林口余生 的个人博客">林口余生</a></p>
+  <p><span>发布时间:</span>2019年04月28日 - 23:04</p>
+  <p><span>最后更新:</span>2019年05月10日 - 17:05</p>
+  <p><span>原始链接:</span><a href="/2019/04/28/HCIP综合实验文档/" title="HCIP综合实验文档">https://www.linkouyusheng.com/2019/04/28/HCIP综合实验文档/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.linkouyusheng.com/2019/04/28/HCIP综合实验文档/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+</div>
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({
+          title: "",
+          text: '复制成功',
+          icon: "success",
+          showConfirmButton: true
+          });
+        });
+    });
+</script>
+
+      
+  </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/实验操作/" rel="tag"># 实验操作</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/05/09/网络层笔记/" rel="prev" title="网络层笔记">
+                网络层笔记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.png" alt="林口余生">
+            
+              <p class="site-author-name" itemprop="name">林口余生</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/LinKouYuSheng" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-globe"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="http://weibo.com/linkouyusheng" target="_blank" title="Weibo">
+                      
+                        <i class="fa fa-fw fa-globe"></i>Weibo</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HCIP综合实验文档"><span class="nav-number">1.</span> <span class="nav-text">HCIP综合实验文档</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#实验需求"><span class="nav-number">1.1.</span> <span class="nav-text">实验需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验环境"><span class="nav-number">1.2.</span> <span class="nav-text">实验环境</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验思路分析"><span class="nav-number">1.3.</span> <span class="nav-text">实验思路分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#业务网段规划"><span class="nav-number">1.4.</span> <span class="nav-text">业务网段规划</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验过程"><span class="nav-number">1.5.</span> <span class="nav-text">实验过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、配置总公司部分"><span class="nav-number">1.5.1.</span> <span class="nav-text">1、配置总公司部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VLAN-部分"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">VLAN 部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置生成树部分"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">配置生成树部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#配置链路聚合部分"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">配置链路聚合部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#VRRP与BFD联动配置部分"><span class="nav-number">1.5.1.4.</span> <span class="nav-text">VRRP与BFD联动配置部分</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、配置分公司-1-部分"><span class="nav-number">1.5.2.</span> <span class="nav-text">2、配置分公司-1 部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VLAN部分"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">VLAN部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#单臂路由部分"><span class="nav-number">1.5.2.2.</span> <span class="nav-text">单臂路由部分</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、配置分公司-2-部分"><span class="nav-number">1.5.3.</span> <span class="nav-text">3、配置分公司-2 部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VLAN配置部分"><span class="nav-number">1.5.3.1.</span> <span class="nav-text">VLAN配置部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#IGP配置部分"><span class="nav-number">1.5.3.2.</span> <span class="nav-text">IGP配置部分</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、配置-VPN-实例部分"><span class="nav-number">1.5.4.</span> <span class="nav-text">4、配置  VPN 实例部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#VPN-实例配置部分"><span class="nav-number">1.5.4.1.</span> <span class="nav-text">VPN 实例配置部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#总公司接入公网部分"><span class="nav-number">1.5.4.2.</span> <span class="nav-text">总公司接入公网部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分公司2接入部分"><span class="nav-number">1.5.4.3.</span> <span class="nav-text">分公司2接入部分</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、配置-AS-100-部分"><span class="nav-number">1.5.5.</span> <span class="nav-text">5、配置 AS 100 部分</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#R1-R4配置部分"><span class="nav-number">1.5.5.1.</span> <span class="nav-text">R1-R4配置部分</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#分公司-2接入部分"><span class="nav-number">1.5.5.2.</span> <span class="nav-text">分公司-2接入部分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验总结"><span class="nav-number">1.6.</span> <span class="nav-text">实验总结</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        ﻿<div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">林口余生</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+      <span class="post-meta-item-text">Site words total count&#58;</span>
+    
+    <span title="Site words total count">9.5k</span>
+  
+</div>
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+-->
+<!--
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共9.5k字</span>
+</div>
+-->
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/velocity/1.2.1/velocity.ui.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.pack.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="https://cdn.bootcss.com/canvas-nest.js/1.0.1/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: true,
+        notify: true,
+        appId: 'zvfvbljqnX4UfjWBJcTDq17P-gzGzoHsz',
+        appKey: 'qh6avhxD7PMmeadmpCe4vyGj',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+<script>
+(function(){
+    var bp = document.createElement('script');
+    var curProtocol = window.location.protocol.split(':')[0];
+    if (curProtocol === 'https') {
+        bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';        
+    }
+    else {
+        bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+    }
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(bp, s);
+})();
+</script>
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
+
+
