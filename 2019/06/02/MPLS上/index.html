@@ -72,7 +72,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT">
+  <meta name="keywords" content="笔记,理论,MPLS,">
 
 
 
@@ -83,16 +83,18 @@
 
 
 
-<meta name="description" content="学习差劲，走投无路，来博客写文档">
-<meta property="og:type" content="website">
-<meta property="og:title" content="林口余生">
-<meta property="og:url" content="https://www.linkouyusheng.com/index.html">
+<meta name="description" content="MPLS（Multi-Protocol Label Switching）多协议标签交换 —— 上 MPLS 简介MPLS 全称是 Multi-Protocol Label Switching —— 多协议标签交换；MPLS 从中文名字中就可以看出两个重点，分别是多协议和标签交换。 多协议：MPLS 基于二层，在二层之上三层之下。同时该协议可以与其他上层协议互相配合。 标签交换：MPLS 在三层之下">
+<meta name="keywords" content="笔记,理论,MPLS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MPLS上">
+<meta property="og:url" content="https://www.linkouyusheng.com/2019/06/02/MPLS上/index.html">
 <meta property="og:site_name" content="林口余生">
-<meta property="og:description" content="学习差劲，走投无路，来博客写文档">
+<meta property="og:description" content="MPLS（Multi-Protocol Label Switching）多协议标签交换 —— 上 MPLS 简介MPLS 全称是 Multi-Protocol Label Switching —— 多协议标签交换；MPLS 从中文名字中就可以看出两个重点，分别是多协议和标签交换。 多协议：MPLS 基于二层，在二层之上三层之下。同时该协议可以与其他上层协议互相配合。 标签交换：MPLS 在三层之下">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2019-06-02T12:30:43.773Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="林口余生">
-<meta name="twitter:description" content="学习差劲，走投无路，来博客写文档">
+<meta name="twitter:title" content="MPLS上">
+<meta name="twitter:description" content="MPLS（Multi-Protocol Label Switching）多协议标签交换 —— 上 MPLS 简介MPLS 全称是 Multi-Protocol Label Switching —— 多协议标签交换；MPLS 从中文名字中就可以看出两个重点，分别是多协议和标签交换。 多协议：MPLS 基于二层，在二层之上三层之下。同时该协议可以与其他上层协议互相配合。 标签交换：MPLS 在三层之下">
 
 
 
@@ -122,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://www.linkouyusheng.com/">
+  <link rel="canonical" href="https://www.linkouyusheng.com/2019/06/02/MPLS上/">
 
 
 
 
 
-  <title>林口余生</title>
+  <title>MPLS上 | 林口余生</title>
   
 
 
@@ -157,8 +159,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -283,9 +284,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -315,9 +316,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/06/02/MPLS上/" itemprop="url">MPLS上</a></h2>
+          <h2 class="post-title" itemprop="name headline">MPLS上</h2>
         
 
         <div class="post-meta">
@@ -430,20 +429,55 @@
       
 
       
-        
-          
-          MPLS（Multi-Protocol Label Switching）多协议标签交换 —— 上
-MPLS 简介MPLS 全称是 Multi-Protocol Label Switching —— 多协议标签交换；MPLS 从中文名字中就可以看出两个重点，分别是多协议和标签交换。
-多协议：MPLS 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/06/02/MPLS上/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <h1 id="MPLS（Multi-Protocol-Label-Switching）多协议标签交换-——-上"><a href="#MPLS（Multi-Protocol-Label-Switching）多协议标签交换-——-上" class="headerlink" title="MPLS（Multi-Protocol Label Switching）多协议标签交换 —— 上"></a>MPLS（Multi-Protocol Label Switching）多协议标签交换 —— 上</h1><p><br></p>
+<h2 id="MPLS-简介"><a href="#MPLS-简介" class="headerlink" title="MPLS 简介"></a>MPLS 简介</h2><p>MPLS 全称是 Multi-Protocol Label Switching —— 多协议标签交换；MPLS 从中文名字中就可以看出两个重点，分别是多协议和标签交换。</p>
+<p><strong>多协议：</strong>MPLS 基于二层，在二层之上三层之下。同时该协议可以与其他上层协议互相配合。</p>
+<p><strong>标签交换：</strong>MPLS 在三层之下意味着不需要数据进行三层转发，同时 MPLS 会分配标签，通过标签来实现转发平面的决策。</p>
+<p><br></p>
+<p><br></p>
+<h2 id="MPLS-产生背景"><a href="#MPLS-产生背景" class="headerlink" title="MPLS 产生背景"></a><strong>MPLS 产生背景</strong></h2><p>MPLS 早期是为了解决数据包转发效率低下的问题而出现的。早期的路由器都是通过软件的方式来进行报文转发处理，并且硬件性能较差（现在的路由器会用CPU计算出一个不用递归下一跳的 FIB 表，然后用专门的硬件来根据 FIB 转发数据）。而早期还有一种解决方案是 ATM 技术（此处不是指提款机(╯▔皿▔)╯），这种技术虽然转发效率还不错，但是技术比较复杂，部署难度和维护成本都很高。</p>
+<p><br></p>
+<p>于是 MPLS 在这种背景下横空出世，MPLS 借鉴了 ATM 的标签转发和面向连接特点。凭着转发效率的优势 MPLS 很受客户的欢迎。但是随着芯片技术、硬件性能的提升，MPLS 的优势渐渐褪去，转发效率渐渐与 IP 转发拉不开差距。现在，MPLS 已经被扩展到了新的应用领域，为网络提供其他的帮助，最常见的有 MPLS VPN 或 MPLS TE （流量工程）。</p>
+<p><br></p>
+<p><br></p>
+<h2 id="MPLS-网络结构"><a href="#MPLS-网络结构" class="headerlink" title="MPLS 网络结构"></a>MPLS 网络结构</h2><p>LSR （Label Switching Router）是标签交换路由器，LSR 具有标签分配和基于标签转发数据报文的能力。用户的 IP 数据流进入 MPLS 域之后，报文会以标签的方式经过每一台 LSR。为了转发标签的数据报文，每台 LSR 都会建立一张标签转发表，标签转发表就是通过标签分发协议依据路由表产生和建立的。</p>
+<p><br></p>
+<p>LER （Label Edge ROuter）是标签边界路由器，LER 具有标签分配能力。LER 有入站的 LER 和出站的 LER。入站 LER 负载对数据报文压入标签，然后转发进入 MPLS 网络；出站的 LER 负责给离开 MPLS 网络的数据报文移除标签，然后根据 IP 转发表进行转发。</p>
+<p><br></p>
+<p>LSP（Label Switching Path）是标签转发路径。LSP 就是流量在进入 MPLS 后以及出 MPLS 之前所经过的隧道路径，一条 LSP 的开端是入站 LER，结尾是出站 LER。这里所说的 LSP 是一条单向的，也就是说数据回来的时候所走的 LSP 又是一条另外的 LSP。而 LSP 是支持嵌套的，即一个 LSP 可以建立在 另一条 LSP 的里面。这种操作通常会在 ISP 运营商网络中使用，即数据报文中压一层私网标签，然后再压一条公网标签使其可以利用公网 MPLS 传输。LSP 有动态和静态两种建立方式，下文详解。</p>
+<p><br></p>
+<p>FEC（Forwarding Equivalent Class）是转发等价类，用来描述具有相同特征的报文在转发过程中被 LSR 以相同方式处理，也就是说一个 FEC 的数据报文走的是同一条 LSP。划分 FEC 的方式又很多，比如去往相同目的前缀的报文就是一个 FEC ，还有五元组（原目IP、原目端口、协议）、VPN等。</p>
+<p><br></p>
+<p><br></p>
+<h2 id="MPLS-报文格式"><a href="#MPLS-报文格式" class="headerlink" title="MPLS 报文格式"></a>MPLS 报文格式</h2><p>MPLS 的报文格式很简单，由 Label Value 、Exp 、 S  、 TTL 一共四个字段组成，整个MPLS 字段介于二层封装和网络层封装中间，一共 32 位。</p>
+<p><br></p>
+<p>Label Value 顾名思义用来表示标签值，这个字段由 20 位，意味着标签值大小可表达范围在 0 到 1048575 ，标签值 0 到 15 是特殊用途的标签，这里不作详细讨论。</p>
+<p><br></p>
+<p>Exp 是一个 3 bit 的实验字段，在 MPLS 设计之初还没有确定该字段的作用，现在主要用来做 QoS。</p>
+<p><br></p>
+<p>S 位叫栈底位（BoS，Bootom of Stack）。只有在最靠近网络层封装的 MPLS 字段，S 位才会置为 1 ，其余时候都是0。这种情况一般都是多个标签嵌套，如前文 LSP 中的描述。而多层嵌套并不是 Label Value 字段有多个，而是多个整体的 MPLS 字段有多个，理论无限叠加。</p>
+<p><br></p>
+<p>TTL（Time to Live）该字段与 IP 报头中的 TTL作用、大小是一样的，在 MPLS 网络中每进行一次标签交换操作，最外层标签中的 TTL 就减一，TTL 一旦减为 0，报文就因为防止环路的原因会被丢弃。IP 报文进入 MPLS 网络后，标签的 TTL 值可以初始化为 255，也可以直接复制 IP 头中的 TTL 值。 </p>
+<p><br><br></p>
+<h2 id="LSP-建立"><a href="#LSP-建立" class="headerlink" title="LSP 建立"></a>LSP 建立</h2><p>LSP 可以静态和动态建立。动态建立 LSP 是使用标签分发协议（比如 LDP）建立，静态就是手工配置，所以静态 LSP 不需要使用任何标签分发协议，没有必要交互任何控制信息，资源开销小。由于静态 LSP 是由手工配置的，无法随着网络拓扑变化而收敛，当网络出现故障后还需要管理员干预，管理相对比较麻烦。也许你会心想，既然显得毫无用处，我为什么还要写这么多来描述静态的方式。这是因为静态 LSP 可以避免像 LDP 故障导致 MPLS 业务流量丢失的情况，静态可以保障 MPLS 中关键应用的数据业务连续性。</p>
+<p><br></p>
+<p><strong>静态 LSP：</strong>一条静态 LSP 有三种角色，Ingress、Transit、Egress。Ingress 节点负责为接收到的 IP 报文压入标签并送入 LSP 隧道，Transit 节点负责以标签交换的方式转发报文，Egress节点负责一处报文中的标签并将报文转发至 IP 网络。手工配置的时候，前一节点出标签的值等于下一个节点入标签的值。</p>
+<p><br></p>
+<ul>
+<li>在 Ingress 节点配置此 LSP 的目的地址、下一跳和出标签的值。</li>
+<li>在 Transit 配置 LSP 的入接口、与上一节点出标签相等的入标签的值、对应的下一跳和出标签的值。</li>
+<li>在 Egress 配置此 LSP 的入接口及与上一届点出标签相等的入标签的值</li>
+</ul>
+<p><br></p>
+<p>从配置方法来说就可以看出，当为多条 LSP 以静态的方式建立时，操作会相当的复杂和麻烦，所以静态 LSP 配置只适合为关键业务提供保障。</p>
+<p><br></p>
+<blockquote>
+<p>当同一条 FEC 的 LSP 被静态和动态的方式同时建立，这个时候会优先走动态，即使动态切换了线路，除非动态故障，否则只会按动态建立的 LSP 去转发流量</p>
+</blockquote>
+<p><br></p>
+<p><br></p>
+<p>LDP 的内容较多，留到下一章去写；如果可能的话，下一章可能会把 MPLS VPN 和 三种跨域解决方案也写上</p>
+
       
     </div>
     
@@ -458,435 +492,84 @@ MPLS 简介MPLS 全称是 Multi-Protocol Label Switching —— 多协议标签�
 
     <div>
   
+    ﻿
+<div style="text-align:center;color: #ccc;font-size:14px;">
+------ 本文结束 ------</div>
+
+  
 </div>
 
 <div>
+      
+        ﻿
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/2019/06/02/MPLS上/">MPLS上</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 林口余生 的个人博客">林口余生</a></p>
+  <p><span>发布时间:</span>2019年06月02日 - 20:06</p>
+  <p><span>最后更新:</span>2019年06月02日 - 20:06</p>
+  <p><span>原始链接:</span><a href="/2019/06/02/MPLS上/" title="MPLS上">https://www.linkouyusheng.com/2019/06/02/MPLS上/</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://www.linkouyusheng.com/2019/06/02/MPLS上/" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>
+</div>
+<script>
+    var clipboard = new Clipboard('.fa-clipboard');
+      $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({
+          title: "",
+          text: '复制成功',
+          icon: "success",
+          showConfirmButton: true
+          });
+        });
+    });
+</script>
+
       
   </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.linkouyusheng.com/2019/05/26/BGP状态机与邻居建立/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林口余生">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="林口余生">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/26/BGP状态机与邻居建立/" itemprop="url">BGP状态机与邻居建立</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-26T19:29:25+08:00">
-                2019-05-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HuaWei-Routing-Switch/" itemprop="url" rel="index">
-                    <span itemprop="name">HuaWei Routing & Switch</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/笔记/" rel="tag"># 笔记</a>
           
-
+            <a href="/tags/理论/" rel="tag"># 理论</a>
           
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/26/BGP状态机与邻居建立/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/BGP状态机与邻居建立/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/MPLS/" rel="tag"># MPLS</a>
           
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  837
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  3
-                </span>
-              
-            </div>
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          
-          BGP邻居建立
-BGP邻居类型
-BGP 的邻居有 IBGP 和 EBGP ，不同的邻居类型在发布路由中有差异
-
-
-IBGP：AS 区域内的 BGP 邻居是 IBGP 邻居
-EBGP：AS 区域间的 BGP 邻居是 EBGP 邻居
-
-
-BGP 的 Router-ID
-像 OSPF 一样，BGP 也有自
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/26/BGP状态机与邻居建立/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/26/BGP状态机与邻居建立/" rel="next" title="BGP状态机与邻居建立">
+                <i class="fa fa-chevron-left"></i> BGP状态机与邻居建立
+              </a>
+            
           </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
 
-    
+          <span class="post-nav-divider"></span>
 
-    
-
-    
-
-    <div>
-  
-</div>
-
-<div>
-      
-  </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.linkouyusheng.com/2019/05/26/BGP反射器防环实验/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林口余生">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="林口余生">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/26/BGP反射器防环实验/" itemprop="url">BGP反射器防环实验</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
+          <div class="post-nav-prev post-nav-item">
             
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-26T19:23:44+08:00">
-                2019-05-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HuaWei-Routing-Switch/" itemprop="url" rel="index">
-                    <span itemprop="name">HuaWei Routing & Switch</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/26/BGP反射器防环实验/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/26/BGP反射器防环实验/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  1.4k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  6
-                </span>
-              
-            </div>
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-          BGP反射器防环机制
-一、实验环境
-二、实验目的
-测试 BGP 中关于反射器放环的细节
-
-
-全部都建立了 IBGP 关系
-R1 和 R2 配置了反射器，都将 R3 和 R4 配置为自己的客户机
-R1 会不会将 3.3.3.3/32 这条路由传递给 R2 ？
-假设 R2 收到了该路由，又会不会传递给 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/26/BGP反射器防环实验/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-  
-</div>
-
-<div>
-      
-  </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -896,618 +579,25 @@ R1 会不会将 3.3.3.3/32 这条路由传递给 R2 ？
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.linkouyusheng.com/2019/05/15/STP生成树/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林口余生">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="林口余生">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/15/STP生成树/" itemprop="url">STP生成树</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-15T18:47:23+08:00">
-                2019-05-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HuaWei-Routing-Switch/" itemprop="url" rel="index">
-                    <span itemprop="name">HuaWei Routing & Switch</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/15/STP生成树/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/15/STP生成树/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  2.3k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  7
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          STP生成树诞生背景​        简介：STP是一个用于局域网中消除环路的协议。运行该协议的设备通过彼此交互信息而发现网络中的环路，并适当对某些端口进行阻塞以消除环路，从有环拓扑变为一个新的无环路拓扑。
-​        出现的问题：由于网络中需要多台交换机能够实现冗余备份，需要将交换机连成环形
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/15/STP生成树/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+    <div class="post-spread">
       
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-  
-</div>
-
-<div>
-      
   </div>
 
-    <footer class="post-footer">
-      
 
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.linkouyusheng.com/2019/05/09/网络层笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林口余生">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="林口余生">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/05/09/网络层笔记/" itemprop="url">网络层笔记</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-05-09T08:57:11+08:00">
-                2019-05-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HuaWei-Routing-Switch/" itemprop="url" rel="index">
-                    <span itemprop="name">HuaWei Routing & Switch</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/05/09/网络层笔记/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/05/09/网络层笔记/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.7k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  16
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          IP地址划分作业题目：
-​        192.168.0.0/18 有5个部门，每个部门有256人；有10个部门，每个部门有128人； 有20个部门，每个部门有64人； 有40个部门，每个部门有32人
-一、解题思路​        其实这道题本应该是按照一贯的套路去从需求数量多的地址、网段开始划
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/05/09/网络层笔记/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
-      
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
     </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-  
-</div>
-
-<div>
-      
-  </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://www.linkouyusheng.com/2019/04/28/HCIP综合实验文档/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="林口余生">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="林口余生">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/04/28/HCIP综合实验文档/" itemprop="url">HCIP综合实验文档</a></h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-28T23:06:52+08:00">
-                2019-04-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/HuaWei-Routing-Switch/" itemprop="url" rel="index">
-                    <span itemprop="name">HuaWei Routing & Switch</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/28/HCIP综合实验文档/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2019/04/28/HCIP综合实验文档/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">字数统计&#58;</span>
-                
-                <span title="字数统计">
-                  3.5k
-                </span>
-              
-
-              
-                <span class="post-meta-divider">|</span>
-              
-
-              
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-clock-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
-                
-                <span title="阅读时长">
-                  14
-                </span>
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          HCIP综合实验文档实验需求
-全网依照拓扑图配置vlan和IP地址
-
-
-总公司：
-a)  SW3和SW4的互连接口启用eth-trunk，最大带宽为2G
-b)  SW1、SW2、SW3、和SW4运行MSTP，SW1为VLAN10的Root，SW2为VLAN20的Root
-c)  PC1-PC4需要提
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/04/28/HCIP综合实验文档/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <div>
-  
-</div>
-
-<div>
-      
-  </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
   
 
 
-          </div>
-          
-
-
-          
 
         </div>
         
@@ -1528,8 +618,17 @@ c)  PC1-PC4需要提
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1607,6 +706,22 @@ c)  PC1-PC4需要提
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MPLS（Multi-Protocol-Label-Switching）多协议标签交换-——-上"><span class="nav-number">1.</span> <span class="nav-text">MPLS（Multi-Protocol Label Switching）多协议标签交换 —— 上</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MPLS-简介"><span class="nav-number">1.1.</span> <span class="nav-text">MPLS 简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MPLS-产生背景"><span class="nav-number">1.2.</span> <span class="nav-text">MPLS 产生背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MPLS-网络结构"><span class="nav-number">1.3.</span> <span class="nav-text">MPLS 网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MPLS-报文格式"><span class="nav-number">1.4.</span> <span class="nav-text">MPLS 报文格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LSP-建立"><span class="nav-number">1.5.</span> <span class="nav-text">LSP 建立</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1770,6 +885,10 @@ c)  PC1-PC4需要提
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 
